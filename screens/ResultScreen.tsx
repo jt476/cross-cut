@@ -12,6 +12,7 @@ export default function ResultScreen({ route, navigation } : {route: any, naviga
   
   return (
     <View style={styles.container}>
+      test
     </View>
   );
 }
