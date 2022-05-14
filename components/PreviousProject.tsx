@@ -5,12 +5,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
 import FontAwesome5 from '@expo/vector-icons/build/FontAwesome5';
 import { useIsFocused } from '@react-navigation/native';
+import React from 'react';
 
-interface ProjectInputProps {
+interface PreviousProjectProps {
   handlePreviousProjectPress: (project: string) => void
 }
 
-export default function PreviousProject<ProjectInputProps>({handlePreviousProjectPress, title, numToDisplay}) {
+export default function PreviousProject<PreviousProjectProps>({handlePreviousProjectPress, title, numToDisplay}) {
   const [previousProjects, setPreviousProjects] = useState<any[]>([]);
   const isFocused = useIsFocused();
   useEffect(() => {

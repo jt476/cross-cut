@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import Colors from '../constants/Colors';
 import { FontAwesome5 } from '@expo/vector-icons';
 import RecentLocations from '../components/PreviousProject';
-import axios from 'axios';
 import { useIsFocused } from '@react-navigation/native';
 import PreviousProject from '../components/PreviousProject';
 
@@ -112,7 +111,7 @@ export default function SplashScreen({ route, navigation } : {route: any, naviga
 const styles = StyleSheet.create({
   backgroundViews: {
     flex: 1,
-    flexDirection: "column",
+    flexDirection: "row",
     zIndex: 2,
     width: '100%',
     height: '100%'

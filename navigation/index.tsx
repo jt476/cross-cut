@@ -5,6 +5,7 @@ import { ColorSchemeName } from 'react-native';
 import SplashScreen from '../screens/SplashScreen';
 import SetProjectEditorScreen from '../screens/ProjectEditorScreen';
 import ResultScreen from '../screens/ResultScreen';
+import React from 'react';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (

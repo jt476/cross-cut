@@ -1,7 +1,7 @@
 import { StyleSheet, ScrollView } from 'react-native';
 import { Text, View } from '../components/Themed';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import React from 'react';
 
 export default function ResultScreen({ route, navigation } : {route: any, navigation: any}) {
   useEffect(() => {

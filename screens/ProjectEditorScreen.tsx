@@ -1,7 +1,5 @@
 import { StyleSheet, KeyboardAvoidingView, Platform, Button, Keyboard, ScrollView, Dimensions } from 'react-native';
 import { Text, View } from '../components/Themed';
-import * as ExpoLocation from 'expo-location';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { FontAwesome5 } from '@expo/vector-icons';
 import React, { useEffect, useRef, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
