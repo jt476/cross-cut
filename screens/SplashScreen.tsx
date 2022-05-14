@@ -1,5 +1,5 @@
 import { Animated, Button, Dimensions, StyleSheet, Image, ScrollView } from 'react-native';
-import { View, Text } from '../components/Themed';
+import { View, Text, Title } from '../components/Themed';
 import React, { useEffect, useState } from 'react';
 import Colors from '../constants/Colors';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -11,12 +11,11 @@ export default function SplashScreen({ route, navigation } : {route: any, naviga
   let defaultAnimations = {
     toValue: { x: 0, y: 0 },
     useNativeDriver: true,
-    speed: 0.1,
-    bounciness: 0,
-    overshootClamping: true,
+    tension: 50,
+    friction: 7,
   };
-  let boxOne = new Animated.ValueXY({x: 0, y: Dimensions.get('window').height});
-  let boxTwo = new Animated.ValueXY({x: 0, y: Dimensions.get('window').height});
+  let boxOne = new Animated.ValueXY({x: 0, y: -20-Dimensions.get('window').height});
+  let boxTwo = new Animated.ValueXY({x: 0, y: 20+Dimensions.get('window').height});
 
   let overlayOpacity = new Animated.Value(0);
   let miniLocationInput = new Animated.ValueXY({x:0, y: Dimensions.get('window').height});
@@ -24,6 +23,7 @@ export default function SplashScreen({ route, navigation } : {route: any, naviga
   useEffect(() => {
     Animated.spring(boxOne, {
       ...defaultAnimations,
+      delay: 10,
     }).start(() => {
       Animated.spring(boxTwo, {
         ...defaultAnimations,
@@ -32,7 +32,7 @@ export default function SplashScreen({ route, navigation } : {route: any, naviga
             overlayOpacity,
             {
               toValue: 1,
-              duration: 1000,
+              duration: 500,
               useNativeDriver: true,
             }
           ).start(() => {
@@ -58,12 +58,16 @@ export default function SplashScreen({ route, navigation } : {route: any, naviga
 
   return (
     <View style={styles.backgroundViews}>
-      <Animated.View style={{flex: 1, backgroundColor: Colors.snow.background,
+      <Animated.View style={{flex: 1, paddingRight: 5, justifyContent: 'center', alignItems: 'flex-end', backgroundColor: Colors.leftSplash.background,
           transform: [{ translateX: boxOne.x }, { translateY: boxOne.y }]
-        }}/>
-      <Animated.View style={{flex: 1, backgroundColor: Colors.thunder.background,
+        }}>
+        <Title style={{fontWeight: 'normal'}}>CROSS</Title>
+      </Animated.View>
+      <Animated.View style={{flex: 1, paddingLeft: 5, justifyContent: 'center', backgroundColor: Colors.rightSplash.background,
           transform: [{ translateX: boxTwo.x }, { translateY: boxTwo.y }]
-        }}/>
+        }}>
+        <Title style={{fontWeight: 'bold'}}>CUT</Title>
+      </Animated.View>
       <Animated.View style={{
           zIndex: 1, 
           opacity: overlayOpacity, 
@@ -76,7 +80,7 @@ export default function SplashScreen({ route, navigation } : {route: any, naviga
         }}>
         <View style={{justifyContent: "flex-end", alignItems: 'center', width: '100%', backgroundColor: 'none', flex: 1}}>
           <Animated.View style={{
-            backgroundColor: '#979dac',
+            backgroundColor: '#8d99ae',
             width: '100%',
             maxWidth: 600,
             borderTopLeftRadius: 15,
@@ -93,8 +97,8 @@ export default function SplashScreen({ route, navigation } : {route: any, naviga
             padding: 20,
             transform: [{ translateX: miniLocationInput.x }, { translateY: miniLocationInput.y }]}}>
             <View style={{backgroundColor: 'none', justifyContent: 'center'}}>
-              <FontAwesome5.Button name='hammer' color='#1c2026' 
-              onPress={() => handlePreviousProjectPress(null)} style={{backgroundColor: 'white'}}
+              <FontAwesome5.Button name='hammer' color='#2B2D42' 
+              onPress={() => handlePreviousProjectPress(null)} style={{backgroundColor: '#edf2f4'}}
               light>
                 What are you making?
               </FontAwesome5.Button>
